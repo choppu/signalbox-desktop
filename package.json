@@ -1,0 +1,25 @@
+{
+  "name": "signalbox-desktop",
+  "version": "1.0.0",
+  "description": "SignalBox Desktop Application",
+  "main": "./out/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && electron ./out/app.js",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "author": "Ksenia Balistreri",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^9.1.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@types/node": "12.12.53",
+    "electron-builder": "^22.7.0",
+    "signalbox-sdk": "file:../signalbox-sdk",
+    "webgl-plot": "^0.3.1"
+  }
+}

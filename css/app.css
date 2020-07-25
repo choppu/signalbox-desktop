@@ -1,0 +1,137 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  font-size: 62.5%;
+  font-size: 1em;
+  color: rgb(55, 55, 55);
+  line-height: 1.3em;
+  font-family: 'Nova Mono', monospace;
+  font-weight: 300;
+  background: rgb(15, 17, 22);
+  overflow-y: hidden;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+input[disabled="disabled"], input[disabled="disabled"]:hover {
+  opacity: 0.7;
+}
+
+.group:before, .group:after {
+  content: " ";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1;
+}
+
+::-webkit-scrollbar {     
+  background-color: rgb(15, 17, 22);
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive,
+::-webkit-scrollbar-thumb {
+  background:  rgb(60, 77, 75);
+  border-radius: 10px;
+}
+
+.signalbox__body {
+  background: rgb(245, 245, 245);
+}
+
+.signalbox__plot-container {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  height: 83vh;
+  background: rgb(15, 16, 16);
+  color: white;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.16);
+}
+
+.signalbox__plot-message {
+  padding: 2em 0;
+  display: inherit;
+}
+
+.signalbox__hidden {
+  display: none;
+}
+
+.signalbox__controls-container {
+  padding: 3em 0;
+  width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.signalbox__controls-btn {
+  background: rgb(153, 102, 203);
+  border: none;
+  color: white;
+  font-family: 'Nova Mono', monospace;
+  padding: .5em 1em;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.16);
+  margin: 0 1em;
+  width: 100px;
+}
+
+.signalbox__plot-canvas {
+  margin-top: 5em;
+  width: 100%;
+  height: 400px;
+}
