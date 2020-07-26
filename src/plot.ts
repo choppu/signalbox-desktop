@@ -1,36 +1,56 @@
-import WebGLPlot, { ColorRGBA, WebglLine } from "webgl-plot";
+import TimeChart from "timechart";
+import { DataPoint } from "timechart/dist/types/renderModel";
+import * as d3 from "d3";
 
 export class Plot {
-  devicePixelRatio: number;
-  numX: number;
-  color: ColorRGBA;
-  line: WebglLine;
-  wglp: WebGLPlot;
-  window: Window;
-  data: Float32Array;
+  chart: TimeChart;
+  sampleTime: number;
+  data: DataPoint[];
+  colors: string[];
+  
 
-  constructor(window: Window, canvas: HTMLCanvasElement) {
-    this.devicePixelRatio = window.devicePixelRatio || 1;
-    this.numX = Math.round(canvas.clientWidth * devicePixelRatio);
-    this.color = new ColorRGBA(Math.random(), Math.random(), Math.random(), 1);
-    this.line = new WebglLine(this.color, this.numX);
-    this.wglp = new WebGLPlot(canvas);
-    this.window = window;
-    this.data = new Float32Array();
+  constructor(name: string, lWidth: number, el: HTMLElement) {
+    this.sampleTime = 0;
+    this.data = [];
+    this.colors = ["lightpink", "crimson", "salmon", "orangered", "orange", "gold", 
+    "lemonchiffon", "goldenrod", "maroon", "darkviolet", "slateblue", "seagreen", 
+    "springgreen", "greenyellow", "teal", "turquoise", "blue", "royalblue", "powderblue"];
+
+    let random = Math.floor(Math.random() * this.colors.length);
+    this.chart = new TimeChart(el, {
+      baseTime: this.sampleTime,
+      series: [{
+        name: name,
+        data: this.data,
+        lineWidth: lWidth,
+        color: d3.rgb(this.colors[random]),
+      }],
+      zoom: {
+        x: {
+            autoRange: true,
+        },
+        y: {
+            autoRange: true
+        }
+      },
+      realTime: true,
+      yRange: {
+        min: -0.1,
+        max: 1.1
+      },
+      xRange: {
+        min: 0,
+        max: 1000
+      }
+    });
   }
 
-  start() : void {
-    this.window.requestAnimationFrame(() => {this.newFrame()});
-  }
+  updatePlot(newData: number[]) : void {
+    for (let i = 0; i < newData.length; i++) {
+      this.sampleTime += 0.01;
+      this.data.push({x: this.sampleTime, y: newData[i]});
+    }
 
-  addLine() : void {
-    this.line.lineSpaceX(-1, 2 / this.numX);
-    this.wglp.addLine(this.line);
-  }
-
-  newFrame() : void {
-    this.line.shiftAdd(this.data);
-    this.wglp.update();
-    this.start();
+    this.chart.update();
   }
 }

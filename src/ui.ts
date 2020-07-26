@@ -1,6 +1,4 @@
-import WebGLplot, { WebglLine, ColorRGBA } from "webgl-plot";
 import { Plot } from "./plot";
-import { ipcRenderer } from "electron";
 
 export namespace UI {
   let plotCanvas: Plot;
@@ -24,13 +22,11 @@ export namespace UI {
   }
 
   export function initPlot() : void {
-    let canv = document.getElementById("signalbox_canvas") as HTMLCanvasElement;
-    plotCanvas = new Plot(window, canv);
-    plotCanvas.addLine();
-    plotCanvas.start();
+    let plotContainer = document.getElementById("signalbox_plot") as HTMLElement;
+    plotCanvas = new Plot("Channel 1", 2, plotContainer);
   }
 
   export function updatePlot(data: number[]) : void {
-    plotCanvas.data = new Float32Array(data);
+    plotCanvas.updatePlot(data);
   }
 }

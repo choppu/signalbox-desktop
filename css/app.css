@@ -91,9 +91,8 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
 }
 
 .signalbox__plot-container {
+  position: relative;
   width: 100%;
-  box-sizing: border-box;
-  text-align: center;
   height: 83vh;
   background: rgb(15, 16, 16);
   color: white;
@@ -101,7 +100,7 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
 }
 
 .signalbox__plot-message {
-  padding: 2em 0;
+  padding: 2em 0 1em 0;
   display: inherit;
 }
 
@@ -110,11 +109,12 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
 }
 
 .signalbox__controls-container {
-  padding: 3em 0;
+  padding: 3em 0 1em 0;
   width: 80%;
   margin: 0 auto;
   box-sizing: border-box;
   text-align: center;
+  color: rgb(55, 55, 55);
 }
 
 .signalbox__controls-btn {
@@ -130,8 +130,19 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
   width: 100px;
 }
 
-.signalbox__plot-canvas {
-  margin-top: 5em;
-  width: 100%;
-  height: 400px;
+.signalbox__plot-chart {
+  width: 98%;
+  height: 600px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 4em 0 2em 0;
+}
+
+.timechart-crosshair {
+  stroke: white !important;
+}
+
+chart-legend {
+  font-size: .9em;
+  color: rgb(55, 55, 55);
 }

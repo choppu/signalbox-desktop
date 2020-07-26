@@ -17,9 +17,11 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/d3": "^5.7.2",
     "@types/node": "12.12.53",
+    "d3": "^5.16.0",
     "electron-builder": "^22.7.0",
     "signalbox-sdk": "file:../signalbox-sdk",
-    "webgl-plot": "^0.3.1"
+    "timechart": "^0.4.0"
   }
 }

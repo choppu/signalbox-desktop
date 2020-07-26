@@ -6,8 +6,8 @@ let stopButton = document.getElementById("controls-btn-stop");
 
 ipcRenderer.on("signalbox-connected", (_) => {
   UI.hideDefaultMessage(true);
-  UI.initPlot();
   UI.enableControls(true);
+  UI.initPlot();
 });
 
 ipcRenderer.on("data-read", (_, data) => {
@@ -23,3 +23,4 @@ stopButton?.addEventListener("click", (e) => {
   ipcRenderer.send("signalbox-stop-acquisition");
   e.preventDefault;
 });
+
