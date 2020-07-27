@@ -24,12 +24,11 @@ export class SignalGenerator {
 
   async generateSignalOutput() {
     if(this.isRunning) {
-      
       let data = [];
 
       for(let i = 0; i < 32; i++) {
-        data.push(this.x/4096.0);
-        this.x = (this.x + 1) % 4096;
+        data.push(this.x/8200.0);
+        this.x = (this.x + 1) % 8200;
       }
 
       await this.box.write(data);
