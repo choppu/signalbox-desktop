@@ -2,19 +2,34 @@
   <head>
     <meta charset="UTF-8">
     <title>SignalBox</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/app.css">
   </head>
   <body class="signalbox__body">
     <div class="signalbox__main-container"> 
       <div class="signalbox__plot-container">
         <div class="signalbox__plot-chart" id="signalbox_plot"></div>
-      </div>
-      <div class="signalbox__controls-container">
-        <input type="button" class="signalbox__controls-btn" id="controls-btn-start" value="Start" disabled="disabled">
-        <input type="button" class="signalbox__controls-btn" id="controls-btn-stop" value="Stop" disabled="disabled">
         <p class="signalbox__plot-message" id="plot-message">No device found</p>
+      </div>
+      <div class="signalbox__bottom-container">
+        <div class="signalbox__controls-container">
+          <input type="button" class="signalbox__controls-btn" id="controls-btn-start" value="&#xe037" disabled="disabled">
+          <input type="button" class="signalbox__controls-btn" id="controls-btn-stop" value="&#xe047" disabled="disabled">
+          <input type="button" class="signalbox__controls-btn" id="controls-btn-configure" value="&#xe8b8" disabled="disabled">
+        </div>
+        <div class="signalbox__alg-btn__container group">
+          <input type="range" min="1" max="20000" value="2" class="signalbox__freq-btn" id="controls-btn-freq">
+          <span id="freq-num" class="signalbox__freq-num">1 Hz</span>
+          <div class="signalbox__alg-btns">
+            <button type="submit" class="signalbox__alg-btn" id="controls-btn-sine"><img src="./img/sine.png" class="btn-img" alt="Sine"></button>
+            <button type="submit" class="signalbox__alg-btn" id="controls-btn-rev-saw"><img src="./img/saw_rew.png" class="btn-img" alt="Reverse Saw"></button>
+            <button type="submit" class="signalbox__alg-btn" id="controls-btn-square"><img src="./img/square.png" class="btn-img" alt="Square"></button>
+            <button type="submit" class="signalbox__alg-btn" id="controls-btn-saw"><img src="./img/saw.png" class="btn-img" alt="Saw"></button>
+            <button type="submit" class="signalbox__alg-btn" id="controls-btn-triangle"><img src="./img/triangle.png" class="btn-img" alt="Triangle"></button>
+          </div>
+        </div>
       </div>
     </div>
   </body>

@@ -23,7 +23,7 @@ export class SigBox {
     let port = ports.find(p => (p.vendorId == vendorID) && (p.productId == productID));
     if (port != undefined) {
       this.box = new SignalBox(port.path);
-      this.sGenerator = new SignalGenerator(this.box);
+      this.sGenerator = new SignalGenerator(this.box, this.window);
 
       this.box.on("data-read", async (data) => {
         this.window.send("data-read", data);
@@ -44,8 +44,17 @@ export class SigBox {
     await this.box!.stop();
   }
 
+  updateSignalSettings(value: string | number) {
+    if(typeof value == "string") {
+      this.sGenerator!.setSignal(value);
+    } else {
+      this.sGenerator!.setSignal(this.sGenerator!.algorithm, value);
+    }  
+  }
+
   installEventHandlers(): void {
     ipcMain.on("signalbox-start-acquisition", () => this.startAcquisition());
     ipcMain.on("signalbox-stop-acquisition", () => this.stopAcquisition());
+    ipcMain.on("update-algorithm", (_, value) => this.updateSignalSettings(value));
   }
 }
