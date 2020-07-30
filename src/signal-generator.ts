@@ -75,6 +75,7 @@ export class SignalGenerator {
         break;  
       case "wav":
         sample = this.wavBuffer.channelData[0][this.wavReadCounter++];
+        this.wavReadCounter = this.wavReadCounter % this.wavBuffer.channelData[0].length;
         break;  
       case "none": 
         sample = -1.0;  
