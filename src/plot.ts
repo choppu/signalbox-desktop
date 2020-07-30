@@ -71,4 +71,10 @@ export class Plot {
 
     this.chart.update();
   }
+
+  resetData() : void {
+    this.dataInput.length = 0;
+    this.dataOutput.length = 0;
+    this.chart.update();
+  }
 }

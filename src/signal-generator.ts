@@ -1,9 +1,13 @@
 import { SignalBox } from "signalbox-sdk/dist/signal-box";
 import { WebContents} from "electron";
+import { Stream } from "signalbox-sdk/node_modules/@types/serialport";
 
 const oneOnPI = 1.0 / Math.PI;
 const twoOnPI = 2.0 / Math.PI;
 const tau = 2.0 * Math.PI;
+
+const fs = require('fs');
+let wav = require('node-wav');
 
 export class SignalGenerator {
   box: SignalBox;
@@ -15,6 +19,8 @@ export class SignalGenerator {
   syncPhase: number;
   center: number;
   window: WebContents;
+  wavBuffer: any;
+  wavReadCounter: number;
 
   constructor(sB: SignalBox, window: WebContents, algorithm = "none", frequency = 2.0) {
     this.box = sB;
@@ -26,6 +32,8 @@ export class SignalGenerator {
     this.center = Math.PI;
     this.syncPhase = tau;
     this.window = window;
+    this.wavBuffer = null;
+    this.wavReadCounter = 0;
   }
 
   run() : void {
@@ -64,7 +72,10 @@ export class SignalGenerator {
         } else {
           sample = -1.0;
         }
-        break;
+        break;  
+      case "wav":
+        sample = this.wavBuffer.channelData[0][this.wavReadCounter++];
+        break;  
       case "none": 
         sample = -1.0;  
         break;
@@ -88,7 +99,7 @@ export class SignalGenerator {
     return sample;
   }
 
-  async generateSignalOutput() {
+  async generateSignalOutput() : Promise<void> {
     if(this.isRunning) {
       let data = [];
 
@@ -102,7 +113,13 @@ export class SignalGenerator {
     }
   }
 
-  setSignal(algorithm: string, frequency = this.frequency) {
+  setWAV(path: string) : void {
+    let file = fs.readFileSync(path);
+    this.wavBuffer = wav.decode(file);
+    this.algorithm = "wav";
+  }
+
+  setSignal(algorithm: string, frequency = this.frequency) : void {
     this.algorithm = algorithm;
     this.frequency = frequency;
   }

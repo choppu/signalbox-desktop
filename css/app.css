@@ -93,7 +93,7 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
 .signalbox__plot-container {
   position: relative;
   width: 100%;
-  height: 67vh;
+  height: 75vh;
   background: rgb(15, 16, 16);
   color: white;
   box-shadow: 0 3px 3px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.16);
@@ -111,7 +111,7 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
 }
 
 .signalbox__controls-container {
-  padding: .7em 2em;
+  padding: .2em 2em;
   margin: 0 auto;
   box-sizing: border-box;
   text-align: center;
@@ -126,27 +126,36 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
   border: 4px solid #eb8e15;
   color: rgb(235, 142, 21);
   font-family: "Material Icons Outlined", monospace;
-  font-size: 2em;
+  font-size: 1.9em;
   box-shadow: 0 3px 3px rgba(136, 86, 184, 0.08), 0 3px 6px rgba(144, 89, 199, 0.16);
-  width: 60px;
-  height: 60px;
-  border-radius: 60px;
+  width: 55px;
+  height: 55px;
+  border-radius: 55px;
   outline: none;
   margin: .5em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-feature-settings: 'liga';
   box-shadow: inset 2px 2px 15px 0 rgb(179, 79, 12);
+  position: relative;
+  box-sizing: border-box;
 }
 
-.signalbox__controls-btn:hover {
+.signalbox__controls-btn[disabled="disabled"]:hover {
+  background: linear-gradient(217deg, rgba(211, 133, 16, 0.1), rgba(83, 46, 4, 0.2) 70.71%),
+  linear-gradient(127deg, rgba(77, 64, 5, 0.2), rgba(141, 83, 8, 0.3) 70.71%),
+  linear-gradient(336deg, rgba(95, 71, 39, 0.2), rgba(44, 25, 8, 0.3) 70.71%);
+  box-shadow: inset 2px 2px 15px 0 rgb(179, 79, 12);
+}
+
+.signalbox__controls-btn:hover, .signalbox__file-btn-container:hover, .signalbox__alg-btn:hover {
   background: linear-gradient(rgba(19, 34, 63, 0.6), rgba(8, 45, 88, 0.8));
   box-shadow: inset 0 0 10px 0 rgb(24, 113, 155);
 }
 
 .signalbox__plot-chart {
   width: 98%;
-  height: 520px;
+  height: 560px;
   box-sizing: border-box;
   margin: 0 auto;
   padding: 2em 0 1em 0;
@@ -163,57 +172,91 @@ chart-legend {
 
 .signalbox__alg-btn__container {
   background-color: rgb(17, 35, 44);
-  text-align: center;
   height: 100%;
 }
 
 .signalbox__alg-btns {
-  padding: 1em 0;
   box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  padding: .7em 2em .4em 2em;
+  text-align: center;
 }
 
 .signalbox__alg-btn {
-  width: 120px;
+  width: 11.111%;
   border: none;
-  background: none;
   display: inline-block;
   box-sizing: border-box;
-  margin: 0 4em;
   outline: none;
+  color: white;
+  font-family: 'IBM Plex Mono', monospace;
+  position: relative;
+  height: 90px;
+  border-radius: 4px;
+  margin: .6em 0;
+  font-size: .8em;
+  background: linear-gradient(217deg, rgba(156, 145, 127, 0.05), rgba(204, 132, 50, 0.1) 70.71%),
+  linear-gradient(127deg, rgba(165, 155, 112, 0.1), rgba(141, 83, 8, 0.2) 70.71%),
+  linear-gradient(336deg, rgba(165, 123, 69, 0.1), rgba(168, 180, 99, 0.2) 70.71%);
+  border: 4px solid #eb8e15;
+  box-shadow: 0 3px 3px rgba(136, 86, 184, 0.08), 0 3px 6px rgba(144, 89, 199, 0.16);
+  box-shadow: inset 5px 5px 30px 0 rgb(179, 79, 12);
 }
 
 .btn-img {
-  width: 100%;
+  width: 70%;
   display: block;
+  margin: 0 auto;
   box-sizing: border-box;
+}
+
+.signalbox__btn-file {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  outline: none;
+  opacity: 0;
+}
+
+.signalbox__btn-file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.signalbox__file-ic {
+  width: 70%;
+  margin: 0 auto;
+  display: block;
 }
 
 .signalbox__freq-btn:focus {
   outline: none;
 }
 
+.signalbox__freq-container {
+  margin: 0;
+}
+
 .signalbox__freq-num {
   color: white;
   display: block;
-  padding-top: .5em;
   font-size: 1.2em;
 }
 
 .signalbox__freq-btn {
-    -webkit-appearance: none;
-    background-color: white;
-    width: 70%;
-    height: 2px;
-    margin: 3.5em 0 1em 0;
-}
-
-.signalbox__freq-btn::-webkit-slider-thumb {
-     -webkit-appearance: none;
-     background: linear-gradient(217deg, rgba(211, 133, 16, 0.4), rgba(83, 46, 4, 0.6) 70.71%),
-     linear-gradient(127deg, rgba(77, 64, 5, 0.4), rgba(141, 83, 8, 0.5) 70.71%),
-     linear-gradient(336deg, rgba(95, 71, 39, 0.4), rgba(44, 25, 8, 0.6) 70.71%);
-    border: 2px solid #eb8e15;
-    width: 23px;
-    height: 23px;
-    border-radius: 23px;
+  width: 55px;
+  color: white;
+  background: none;
+  border: none;
+  border-bottom: 1px solid white;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  font-size: 1em;
+  font-family: 'IBM Plex Mono', monospace;
+  text-align: center;
 }

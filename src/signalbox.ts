@@ -52,9 +52,14 @@ export class SigBox {
     }  
   }
 
+  readWAVFile(path: string) : void {
+    this.sGenerator?.setWAV(path);
+  }
+
   installEventHandlers(): void {
     ipcMain.on("signalbox-start-acquisition", () => this.startAcquisition());
     ipcMain.on("signalbox-stop-acquisition", () => this.stopAcquisition());
     ipcMain.on("update-algorithm", (_, value) => this.updateSignalSettings(value));
+    ipcMain.on("wav-file-loaded", (_, path) => this.readWAVFile(path));
   }
 }

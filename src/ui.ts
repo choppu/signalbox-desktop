@@ -31,15 +31,24 @@ export namespace UI {
     plotCanvas.updatePlot(data, type);
   }
 
-  export function updateSignalAlgorithm(btn: HTMLInputElement, value?: string) {
+  export function resetPlot() : void {
+    plotCanvas.resetData();
+  }
+
+  export function updateSignalAlgorithm(btn: HTMLInputElement | HTMLElement, value?: string) {
     if(value) {
       btn.addEventListener("click", () => ipcRenderer.send("update-algorithm", value));
     } else {
-      btn.addEventListener("input", () => {
-        ipcRenderer.send("update-algorithm", parseInt(btn.value, 10));
-        document.getElementById("freq-num")!.innerHTML = `${btn.value} Hz`;
-      });
-      
+      let el = btn as HTMLInputElement;
+      el.addEventListener("change", (e) => {
+        if(el.value) {
+          ipcRenderer.send("update-algorithm", parseInt(el.value, 10));
+        } else {
+          ipcRenderer.send("update-algorithm", parseInt(el.value, 1));
+          el.value = "1";
+        }
+        e.preventDefault();
+      }); 
     }
   }
 }

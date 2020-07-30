@@ -21,6 +21,7 @@
     "@types/node": "12.12.53",
     "d3": "^5.16.0",
     "electron-builder": "^22.7.0",
+    "node-wav": "0.0.2",
     "signalbox-sdk": "file:../signalbox-sdk",
     "timechart": "^0.4.0"
   }

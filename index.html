@@ -18,16 +18,45 @@
           <input type="button" class="signalbox__controls-btn" id="controls-btn-start" value="&#xe037" disabled="disabled">
           <input type="button" class="signalbox__controls-btn" id="controls-btn-stop" value="&#xe047" disabled="disabled">
           <input type="button" class="signalbox__controls-btn" id="controls-btn-configure" value="&#xe8b8" disabled="disabled">
+          <input type="button" class="signalbox__controls-btn" id="controls-btn-reset-plot" value="&#xe872" disabled="disabled">
         </div>
         <div class="signalbox__alg-btn__container group">
-          <input type="range" min="1" max="20000" value="2" class="signalbox__freq-btn" id="controls-btn-freq">
-          <span id="freq-num" class="signalbox__freq-num">1 Hz</span>
           <div class="signalbox__alg-btns">
-            <button type="submit" class="signalbox__alg-btn" id="controls-btn-sine"><img src="./img/sine.png" class="btn-img" alt="Sine"></button>
-            <button type="submit" class="signalbox__alg-btn" id="controls-btn-rev-saw"><img src="./img/saw_rew.png" class="btn-img" alt="Reverse Saw"></button>
-            <button type="submit" class="signalbox__alg-btn" id="controls-btn-square"><img src="./img/square.png" class="btn-img" alt="Square"></button>
-            <button type="submit" class="signalbox__alg-btn" id="controls-btn-saw"><img src="./img/saw.png" class="btn-img" alt="Saw"></button>
-            <button type="submit" class="signalbox__alg-btn" id="controls-btn-triangle"><img src="./img/triangle.png" class="btn-img" alt="Triangle"></button>
+            <div class="signalbox__alg-btn" id="controls-btn-sine">
+              <img src="./img/sine.png" class="btn-img" alt="Sine">
+              <span>Sine</span>
+            </div>
+            <div class="signalbox__alg-btn" id="controls-btn-square">
+              <img src="./img/square.png" class="btn-img" alt="Square">
+              <span>Square</span>
+            </div>
+            <div class="signalbox__alg-btn" id="controls-btn-triangle">
+              <img src="./img/triangle.png" class="btn-img" alt="Triangle">
+              <span>Triangle</span>
+            </div>
+            <div class="signalbox__alg-btn" id="controls-btn-saw">
+              <img src="./img/saw.png" class="btn-img" alt="Saw">
+              <span>Saw</span>
+            </div>
+            <div class="signalbox__alg-btn" id="controls-btn-rev-saw">
+              <img src="./img/saw_rew.png" class="btn-img" alt="Reverse Saw">
+              <span>Reverse Saw</span>
+            </div>
+            <div class="signalbox__alg-btn" id="controls-btn-mute">
+              <img src="./img/mute.png" class="btn-img" alt="Mute">
+              <span>Mute</span>
+            </div>
+            <div class="signalbox__alg-btn">
+              <img src="./img/wav.png" alt="WAV File" class="signalbox__file-ic">
+              <span>.WAV File</span>
+              <input type="file" name="Wav File" class="signalbox__btn-file" id="controls-btn-load" accept=".wav">
+            </div>
+            <div class="signalbox__alg-btn signalbox__freq-container">
+              <img src="./img/freq.png" class="btn-img btn-freq-img" alt="Frequency">
+              <div class="group">
+                <input type="text" value="1" class="signalbox__freq-btn" id="controls-btn-freq"><span> Hz</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
