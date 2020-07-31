@@ -1,10 +1,7 @@
 import { WebContents, ipcMain } from "electron";
-import { SBox } from "signalbox-sdk"
 import { SignalBox } from "signalbox-sdk/dist/signal-box";
 import { SignalGenerator } from "./signal-generator";
-
-const vendorID = '0483';
-const productID = '5740';
+import { BoardInfo } from "signalbox-sdk/dist/board-info";
 
 export class SigBox {
   window: WebContents;
@@ -19,15 +16,19 @@ export class SigBox {
   }
 
   async connect() : Promise<void> {
-    let ports = await SBox.SignalBox.getSerialPorts();
-    let port = ports.find(p => (p.vendorId == vendorID) && (p.productId == productID));
+    let ports = await SignalBox.getSerialPorts();
+    let port = ports.find(p => BoardInfo.getBoard(p.vendorId, p.productId));
     if (port != undefined) {
-      this.box = new SignalBox(port.path);
+      this.box = new SignalBox(port.path, BoardInfo.getBoard(port.vendorId, port.productId)!);
       this.sGenerator = new SignalGenerator(this.box, this.window);
 
       this.box.on("data-read", async (data) => {
         this.window.send("data-read", data);
       });
+
+      this.box.on("is-running", () => {
+        this.sGenerator!.run();
+      })
 
       await this.box.connect();
       this.window.send("signalbox-connected");
@@ -36,7 +37,6 @@ export class SigBox {
 
   async startAcquisition() : Promise<void> {
     await this.box!.run();
-    this.sGenerator!.run();
   }
 
   async stopAcquisition() : Promise<void> {
