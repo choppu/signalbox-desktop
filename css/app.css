@@ -127,7 +127,6 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
   color: rgb(235, 142, 21);
   font-family: "Material Icons Outlined", monospace;
   font-size: 1.9em;
-  box-shadow: 0 3px 3px rgba(136, 86, 184, 0.08), 0 3px 6px rgba(144, 89, 199, 0.16);
   width: 55px;
   height: 55px;
   border-radius: 55px;
@@ -136,12 +135,23 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-feature-settings: 'liga';
-  box-shadow: inset 2px 2px 15px 0 rgb(179, 79, 12);
+  box-shadow: inset 2px 2px 15px 0 rgb(179, 79, 12), 0 3px 3px rgba(136, 86, 184, 0.08), 0 3px 6px rgba(144, 89, 199, 0.16);
   position: relative;
   box-sizing: border-box;
 }
 
-.signalbox__controls-btn[disabled="disabled"]:hover {
+.signalbox__start-btn {
+  width: 67px;
+  height: 67px;
+  border-radius: 67px;
+  margin: .5em .2em;
+  background: linear-gradient(rgba(19, 34, 63, 0.6), rgba(8, 45, 88, 0.8));
+  box-shadow: inset 10px 10px 30px 5px rgb(179, 79, 12), 0 3px 3px rgba(136, 86, 184, 0.08), 0 3px 6px rgba(144, 89, 199, 0.16);
+  border-color: rgb(24, 113, 155);
+  color: rgb(24, 113, 155);
+}
+
+.signalbox__controls-btn[disabled="disabled"]:hover, .signalbox__start-btn[disabled="disabled"]:hover {
   background: linear-gradient(217deg, rgba(211, 133, 16, 0.1), rgba(83, 46, 4, 0.2) 70.71%),
   linear-gradient(127deg, rgba(77, 64, 5, 0.2), rgba(141, 83, 8, 0.3) 70.71%),
   linear-gradient(336deg, rgba(95, 71, 39, 0.2), rgba(44, 25, 8, 0.3) 70.71%);
@@ -179,7 +189,7 @@ chart-legend {
   box-sizing: border-box;
   width: 100%;
   text-align: left;
-  padding: .7em 2em .4em 2em;
+  padding: .7em 1em .4em 1em;
   text-align: center;
 }
 
@@ -193,15 +203,19 @@ chart-legend {
   font-family: 'IBM Plex Mono', monospace;
   position: relative;
   height: 90px;
-  border-radius: 4px;
   margin: .6em 0;
   font-size: .8em;
   background: linear-gradient(217deg, rgba(156, 145, 127, 0.05), rgba(204, 132, 50, 0.1) 70.71%),
   linear-gradient(127deg, rgba(165, 155, 112, 0.1), rgba(141, 83, 8, 0.2) 70.71%),
   linear-gradient(336deg, rgba(165, 123, 69, 0.1), rgba(168, 180, 99, 0.2) 70.71%);
-  border: 4px solid #eb8e15;
-  box-shadow: 0 3px 3px rgba(136, 86, 184, 0.08), 0 3px 6px rgba(144, 89, 199, 0.16);
-  box-shadow: inset 5px 5px 30px 0 rgb(179, 79, 12);
+  border: 3px solid #eb8e1560;
+  box-shadow: inset 5px 5px 30px 0 rgb(179, 79, 12), 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.signalbox__alg-btn[disabled="disabled"] {
+  pointer-events: none;
 }
 
 .btn-img {

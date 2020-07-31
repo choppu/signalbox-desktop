@@ -14,12 +14,14 @@ export namespace UI {
     }
   }
 
-  export function enableControls(action: boolean) : void {
-    let buttons = document.getElementsByClassName("signalbox__controls-btn");
-
-    for (let i = 0; i < buttons.length; i++) {
-      action ? buttons[i].removeAttribute("disabled") : buttons[i].setAttribute("disabled", "disabled");
+  export function enableButtons(btnsArray: HTMLCollectionOf<Element>, action: boolean) : void {
+    for (let i = 0; i < btnsArray.length; i++) {
+      action ? btnsArray[i].removeAttribute("disabled") : btnsArray[i].setAttribute("disabled", "disabled");
     }
+  }
+
+  export function enableButton(btn: HTMLElement, enabled: boolean) : void {
+    enabled ? btn.removeAttribute("disabled") : btn.setAttribute("disabled", "disabled");
   }
 
   export function initPlot() : void {

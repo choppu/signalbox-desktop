@@ -37,11 +37,15 @@ export class SigBox {
 
   async startAcquisition() : Promise<void> {
     await this.box!.run();
+    this.window.send("enable-stop-button");
   }
 
   async stopAcquisition() : Promise<void> {
     this.sGenerator!.stop();
-    await this.box!.stop();
+    setTimeout(async () =>{
+      await this.box!.stop();
+      this.window.send("enable-start-button");
+    }, 1000);
   }
 
   updateSignalSettings(value: string | number) {
