@@ -1,10 +1,14 @@
 import { ipcRenderer } from "electron";
 import { UI } from "./ui";
+import { Configuaration } from "./configuartion";
+import { BoardInfo } from "signalbox-sdk/dist/board-info";
+import { BoardConfiguration } from "signalbox-sdk/dist/board-configuration";
 
 let controls = document.getElementsByClassName("signalbox__controls-btn");
 let startButton = document.getElementById("controls-btn-start");
 let stopButton = document.getElementById("controls-btn-stop");
 let loadButton = document.getElementById("controls-btn-load") as HTMLInputElement;
+let configureButton = document.getElementById("controls-btn-configure");
 let resetButton = document.getElementById("controls-btn-reset-plot");
 
 let signalModifiers = document.getElementsByClassName("signalbox__alg-btn");
@@ -16,7 +20,15 @@ let revSawButton = document.getElementById("controls-btn-rev-saw") as HTMLElemen
 let freqButton = document.getElementById("controls-btn-freq") as HTMLInputElement;
 let muteButton = document.getElementById("controls-btn-mute") as HTMLElement;
 
-ipcRenderer.on("signalbox-connected", (_) => {
+let mainLayout = document.getElementById("main-container");
+let configurationLayout = document.getElementById("configuration-container");
+
+let boardInfo: BoardInfo;
+let boardConfig: BoardConfiguration;
+
+ipcRenderer.on("signalbox-connected", (_, info, config) => {
+  boardInfo = info;
+  boardConfig = config;
   UI.hideDefaultMessage(true);
   UI.enableButtons(controls, true);
   UI.enableButtons(signalModifiers, true);
@@ -34,15 +46,21 @@ ipcRenderer.on("data-output-updated", (_, data) => {
 ipcRenderer.on("enable-start-button", (_) => UI.enableButton(startButton!, true));
 ipcRenderer.on("enable-stop-button", (_) => UI.enableButton(stopButton!, true));
 
+ipcRenderer.on("config-updated", (_, newConfig) => {
+  boardConfig = newConfig;
+})
+
 startButton?.addEventListener("click", (e) => {
   ipcRenderer.send("signalbox-start-acquisition");
   UI.enableButton(stopButton!, false);
+  UI.enableButton(configureButton!, false);
   e.preventDefault;
 });
 
 stopButton?.addEventListener("click", (e) => {
   ipcRenderer.send("signalbox-stop-acquisition");
   UI.enableButton(startButton!, false);
+  UI.enableButton(configureButton!, true);
   e.preventDefault;
 });
 
@@ -58,6 +76,10 @@ loadButton?.addEventListener("input", (e) => {
   }
 });
 
+configureButton?.addEventListener("click", (e) => {
+  UI.loadFragment(mainLayout!, configurationLayout!, () => Configuaration.update(boardInfo, boardConfig));
+  e.preventDefault();
+});
 
 UI.updateSignalAlgorithm(sineButton, "sine");
 UI.updateSignalAlgorithm(triangleButton, "triangle");

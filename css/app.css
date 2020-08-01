@@ -93,7 +93,7 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
 .signalbox__plot-container {
   position: relative;
   width: 100%;
-  height: 75vh;
+  height: 74vh;
   background: rgb(15, 16, 16);
   color: white;
   box-shadow: 0 3px 3px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.16);
@@ -135,7 +135,7 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-feature-settings: 'liga';
-  box-shadow: inset 2px 2px 15px 0 rgb(179, 79, 12), 0 3px 3px rgba(136, 86, 184, 0.08), 0 3px 6px rgba(144, 89, 199, 0.16);
+  box-shadow: inset 2px 2px 15px 0 rgb(179, 79, 12), 0 10px 10px rgba(0,0,0,0.30), 0 10px 10px rgba(0,0,0,0.22);
   position: relative;
   box-sizing: border-box;
 }
@@ -146,16 +146,16 @@ input[disabled="disabled"], input[disabled="disabled"]:hover {
   border-radius: 67px;
   margin: .5em .2em;
   background: linear-gradient(rgba(19, 34, 63, 0.6), rgba(8, 45, 88, 0.8));
-  box-shadow: inset 10px 10px 30px 5px rgb(179, 79, 12), 0 3px 3px rgba(136, 86, 184, 0.08), 0 3px 6px rgba(144, 89, 199, 0.16);
+  box-shadow: inset 10px 10px 30px 5px rgb(179, 79, 12),  0 10px 10px rgba(0,0,0,0.30), 0 10px 10px rgba(0,0,0,0.22);
   border-color: rgb(24, 113, 155);
   color: rgb(24, 113, 155);
 }
 
-.signalbox__controls-btn[disabled="disabled"]:hover, .signalbox__start-btn[disabled="disabled"]:hover {
+.signalbox__controls-btn[disabled="disabled"]:hover {
   background: linear-gradient(217deg, rgba(211, 133, 16, 0.1), rgba(83, 46, 4, 0.2) 70.71%),
   linear-gradient(127deg, rgba(77, 64, 5, 0.2), rgba(141, 83, 8, 0.3) 70.71%),
   linear-gradient(336deg, rgba(95, 71, 39, 0.2), rgba(44, 25, 8, 0.3) 70.71%);
-  box-shadow: inset 2px 2px 15px 0 rgb(179, 79, 12);
+  box-shadow: inset 2px 2px 15px 0 rgb(179, 79, 12),  0 10px 10px rgba(0,0,0,0.30), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .signalbox__controls-btn:hover, .signalbox__file-btn-container:hover, .signalbox__alg-btn:hover {
@@ -273,4 +273,9 @@ chart-legend {
   font-size: 1em;
   font-family: 'IBM Plex Mono', monospace;
   text-align: center;
+}
+
+.signalbox__configure-container {
+  background: black;
+  color: white;
 }

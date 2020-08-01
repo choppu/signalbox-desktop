@@ -1,69 +1,167 @@
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>SignalBox</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/app.css">
-  </head>
-  <body class="signalbox__body">
-    <div class="signalbox__main-container"> 
-      <div class="signalbox__plot-container">
-        <div class="signalbox__plot-chart" id="signalbox_plot"></div>
-        <p class="signalbox__plot-message" id="plot-message">No device found</p>
+
+<head>
+  <meta charset="UTF-8">
+  <title>SignalBox</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,700;2,300&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body class="signalbox__body">
+  <div class="signalbox__main-container" id="main-container">
+    <div class="signalbox__plot-container">
+      <div class="signalbox__plot-chart" id="signalbox_plot"></div>
+      <p class="signalbox__plot-message" id="plot-message">No device found</p>
+    </div>
+    <div class="signalbox__bottom-container">
+      <div class="signalbox__controls-container">
+        <input type="button" class="signalbox__controls-btn" id="controls-btn-configure" value="&#xe8b8"
+          disabled="disabled">
+        <input type="button" class="signalbox__controls-btn" id="controls-btn-export-wav" value="&#xe884"
+          disabled="disabled">
+        <input type="button" class="signalbox__controls-btn signalbox__start-btn" id="controls-btn-start"
+          value="&#xe037" disabled="disabled">
+        <input type="button" class="signalbox__controls-btn" id="controls-btn-stop" value="&#xe047" disabled="disabled">
+        <input type="button" class="signalbox__controls-btn" id="controls-btn-reset-plot" value="&#xe872"
+          disabled="disabled">
       </div>
-      <div class="signalbox__bottom-container">
-        <div class="signalbox__controls-container">
-          <input type="button" class="signalbox__controls-btn" id="controls-btn-configure" value="&#xe8b8" disabled="disabled">
-          <input type="button" class="signalbox__controls-btn" id="controls-btn-stop" value="&#xe047" disabled="disabled">
-          <input type="button" class="signalbox__controls-btn signalbox__start-btn" id="controls-btn-start" value="&#xe037" disabled="disabled">
-          <input type="button" class="signalbox__controls-btn" id="controls-btn-export-wav" value="&#xe884" disabled="disabled">
-          <input type="button" class="signalbox__controls-btn" id="controls-btn-reset-plot" value="&#xe872" disabled="disabled">
-        </div>
-        <div class="signalbox__alg-btn__container group">
-          <div class="signalbox__alg-btns">
-            <div class="signalbox__alg-btn" id="controls-btn-sine" disabled="disabled">
-              <img src="./img/sine.png" class="btn-img" alt="Sine">
-              <span>Sine</span>
-            </div>
-            <div class="signalbox__alg-btn" id="controls-btn-square" disabled="disabled">
-              <img src="./img/square.png" class="btn-img" alt="Square">
-              <span>Square</span>
-            </div>
-            <div class="signalbox__alg-btn" id="controls-btn-triangle" disabled="disabled">
-              <img src="./img/triangle.png" class="btn-img" alt="Triangle">
-              <span>Triangle</span>
-            </div>
-            <div class="signalbox__alg-btn" id="controls-btn-saw" disabled="disabled">
-              <img src="./img/saw.png" class="btn-img" alt="Saw">
-              <span>Saw</span>
-            </div>
-            <div class="signalbox__alg-btn" id="controls-btn-rev-saw" disabled="disabled">
-              <img src="./img/saw_rew.png" class="btn-img" alt="Reverse Saw">
-              <span>Reverse Saw</span>
-            </div>
-            <div class="signalbox__alg-btn" id="controls-btn-mute" disabled="disabled">
-              <img src="./img/mute.png" class="btn-img" alt="Mute">
-              <span>Mute</span>
-            </div>
-            <div class="signalbox__alg-btn" disabled="disabled">
-              <img src="./img/wav.png" alt="WAV File" class="signalbox__file-ic">
-              <span>.WAV File</span>
-              <input type="file" name="Wav File" class="signalbox__btn-file" id="controls-btn-load" accept=".wav">
-            </div>
-            <div class="signalbox__alg-btn signalbox__freq-container" disabled="disabled">
-              <img src="./img/freq.png" class="btn-img btn-freq-img" alt="Frequency">
-              <div class="group">
-                <input type="text" value="1" class="signalbox__freq-btn" id="controls-btn-freq"><span> Hz</span>
-              </div>
+      <div class="signalbox__alg-btn__container group">
+        <div class="signalbox__alg-btns">
+          <div class="signalbox__alg-btn" id="controls-btn-sine" disabled="disabled">
+            <img src="./img/sine.png" class="btn-img" alt="Sine">
+            <span>Sine</span>
+          </div>
+          <div class="signalbox__alg-btn" id="controls-btn-square" disabled="disabled">
+            <img src="./img/square.png" class="btn-img" alt="Square">
+            <span>Square</span>
+          </div>
+          <div class="signalbox__alg-btn" id="controls-btn-triangle" disabled="disabled">
+            <img src="./img/triangle.png" class="btn-img" alt="Triangle">
+            <span>Triangle</span>
+          </div>
+          <div class="signalbox__alg-btn" id="controls-btn-saw" disabled="disabled">
+            <img src="./img/saw.png" class="btn-img" alt="Saw">
+            <span>Saw</span>
+          </div>
+          <div class="signalbox__alg-btn" id="controls-btn-rev-saw" disabled="disabled">
+            <img src="./img/saw_rew.png" class="btn-img" alt="Reverse Saw">
+            <span>Reverse Saw</span>
+          </div>
+          <div class="signalbox__alg-btn" id="controls-btn-mute" disabled="disabled">
+            <img src="./img/mute.png" class="btn-img" alt="Mute">
+            <span>Mute</span>
+          </div>
+          <div class="signalbox__alg-btn" disabled="disabled">
+            <img src="./img/wav.png" alt="WAV File" class="signalbox__file-ic">
+            <span>.WAV File</span>
+            <input type="file" name="Wav File" class="signalbox__btn-file" id="controls-btn-load" accept=".wav">
+          </div>
+          <div class="signalbox__alg-btn signalbox__freq-container" disabled="disabled">
+            <img src="./img/freq.png" class="btn-img btn-freq-img" alt="Frequency">
+            <div class="group">
+              <input type="text" value="2" class="signalbox__freq-btn" id="controls-btn-freq"><span> Hz</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
-  <script>
-    require('./out/renderer.js');
-  </script>
+  </div>
+  <div class="signalbox__configure-container signalbox__hidden" id="configuration-container">
+    <div class="signalbox__config-section-container">
+      <p class="signalbox__config-section-heading">ADC Configuration</p>
+      <div class="signalbox__config-section-form" id="idc-form">
+        <div class="signalbox__config-section-form-element">
+          <label for="adc-enabled" class="signalbox__config-section-form-label">Enabled</label>
+          <input type="radio" class="signalbox__config-section-form-radio" id="adc-enabled" name="adc-enabled" value="adc-enabled" checked required>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="adc-oversampling" class="signalbox__config-section-form-label">Oversampling</label>
+          <select name="adc-oversampling" id="adc-oversampling" class="signalbox__config-section-form-select"required></select>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="adc-sampling-time" class="signalbox__config-section-form-label">Sampling Time</label>
+          <select name="adc-sampling-time" id="adc-sampling-time" class="signalbox__config-section-form-select"required></select>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="adc-oversampling" class="signalbox__config-section-form-label">Prescaler</label>
+          <input type="text" id="adc-prescaler" name="adc-prescaler" class="signalbox__config-section-form-text" required>
+          <label for="adc-period" class="signalbox__config-section-form-label">Period time</label>
+          <input type="text" id="adc-period" name="adc-period" class="signalbox__config-section-form-text" required>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="adc-samp-rate" class="signalbox__config-section-form-label">Sampling rate</label>
+          <input type="text" id="adc-samp-rate" name="adc-samp-rate" class="signalbox__config-section-form-text" required>
+          <span id="adc-frequency-message"></span>
+        </div>
+      </div>
+    </div>
+    <div class="signalbox__config-section-container">
+      <p class="signalbox__config-section-heading">DAC Configuration</p>
+      <div class="signalbox__config-section-form" id="dac-form">
+        <div class="signalbox__config-section-form-element">
+          <label for="dac-enabled" class="signalbox__config-section-form-label">Enabled</label>
+          <input type="radio" class="signalbox__config-section-form-radio" id="dac-enabled" name="dac-enabled" value="dac-enabled" required>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="dac-oversampling" class="signalbox__config-section-form-label">Prescaler</label>
+          <input type="text" id="dac-prescaler" name="dac-prescaler" class="signalbox__config-section-form-text" required>
+          <label for="dac-period" class="signalbox__config-section-form-label">Period time</label>
+          <input type="text" id="dac-period" name="dac-period" class="signalbox__config-section-form-text" required>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="dac-samp-rate" class="signalbox__config-section-form-label">Sampling rate</label>
+          <input type="text" id="dac-samp-rate" name="dac-samp-rate" class="signalbox__config-section-form-text" required>
+          <span id="dac-frequency-message"></span>
+        </div>
+      </div>
+    </div>
+    <div class="signalbox__config-section-container">
+      <p class="signalbox__config-section-heading">OPAMP Configuration</p>
+      <div class="signalbox__config-section-form" id="opamp-form">
+        <p class="signalbox__config-section-form-heading">OPAMP 2</p>
+        <div class="signalbox__config-section-form-element">
+          <label for="opamp-enabled" class="signalbox__config-section-form-label">Enabled</label>
+          <input type="radio" class="signalbox__config-section-form-radio" id="opamp-enabled" name="opamp-enabled" value="opamp-enabled" required>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="opamp-gain" class="signalbox__config-section-form-label">Gain</label>
+          <select name="opamp-gain" id="opamp-gain" class="signalbox__config-section-form-select"required></select>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="opamp-inv-input" class="signalbox__config-section-form-label">Inverting input</label>
+          <input type="radio" class="signalbox__config-section-form-radio" id="opamp-inv-input" name="opamp-inv-input" value="opamp-inv-input" required>
+        </div>
+      </div>
+      <div class="signalbox__config-section-form" id="opamp2-form">
+        <p class="signalbox__config-section-form-heading">OPAMP 2</p>
+        <div class="signalbox__config-section-form-element">
+          <label for="opamp2-enabled" class="signalbox__config-section-form-label">Enabled</label>
+          <input type="radio" class="signalbox__config-section-form-radio" id="opamp2-enabled" name="opamp2-enabled" value="opamp2-enabled" required>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="opamp2-gain" class="signalbox__config-section-form-label">Gain</label>
+          <select name="opamp2-gain" id="opamp2-gain" class="signalbox__config-section-form-select"required></select>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="opamp2-inv-input" class="signalbox__config-section-form-label">Inverting input</label>
+          <input type="radio" class="signalbox__config-section-form-radio" id="opamp2-inv-input" name="opamp2-inv-input" value="opamp2-inv-input" required>
+        </div>
+      </div>
+      <div class="signalbox__btns-container">
+        <button type="submit" class="signalbox__btn" id="configuration-btn-submit">Configure</button>
+        <button type="submit" class="signalbox__btn" id="configuration-btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  require('./out/renderer.js');
+</script>
+
 </html>

@@ -1,6 +1,6 @@
 import { SignalBox } from "signalbox-sdk/dist/signal-box";
 import { WebContents} from "electron";
-import { Stream } from "signalbox-sdk/node_modules/@types/serialport";
+import { BoardInfo } from "signalbox-sdk/dist/board-info";
 
 const oneOnPI = 1.0 / Math.PI;
 const twoOnPI = 2.0 / Math.PI;
@@ -27,7 +27,7 @@ export class SignalGenerator {
     this.isRunning = false;
     this.algorithm = algorithm;
     this.frequency = frequency;
-    this.rate = 100000.0;
+    this.rate = BoardInfo.getSampleFrequency(this.box.configuration.dacConfiguration[0].prescaler, this.box.configuration.dacConfiguration[0].period, this.box.boardInfo.frequency);
     this.phase = 0.0;
     this.center = Math.PI;
     this.syncPhase = tau;
@@ -38,6 +38,7 @@ export class SignalGenerator {
 
   run() : void {
     if(!this.isRunning) {
+      this.rate = BoardInfo.getSampleFrequency(this.box.configuration.dacConfiguration[0].prescaler, this.box.configuration.dacConfiguration[0].period, this.box.boardInfo.frequency);
       this.isRunning = true;
       this.generateSignalOutput();
     } 
@@ -101,7 +102,7 @@ export class SignalGenerator {
   }
 
   async generateSignalOutput() : Promise<void> {
-    if(this.isRunning) {
+    while(this.isRunning) {
       let data = [];
 
       for(let i = 0; i < 32768; i++) {
@@ -110,7 +111,6 @@ export class SignalGenerator {
 
       this.window.send("data-output-updated", data);
       await this.box.write(data);
-      if (this.isRunning) setImmediate(() => this.generateSignalOutput());
     }
   }
 

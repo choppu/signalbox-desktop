@@ -24,6 +24,15 @@ export namespace UI {
     enabled ? btn.removeAttribute("disabled") : btn.setAttribute("disabled", "disabled");
   }
 
+  export function loadFragment(activeContainer: HTMLElement, newContainer: HTMLElement, onLoad?: () => void) : void {
+    activeContainer?.classList.add("signalbox__hidden");
+    newContainer?.classList.remove("signalbox__hidden");
+
+    if(onLoad) {
+      onLoad();
+    } 
+  }
+
   export function initPlot() : void {
     let plotContainer = document.getElementById("signalbox_plot") as HTMLElement;
     plotCanvas = new Plot("Input", "Output", 2, plotContainer);
@@ -52,5 +61,17 @@ export namespace UI {
         e.preventDefault();
       }); 
     }
+  }
+
+  export function prefillSelectField(field: HTMLSelectElement, opts: {label: string, value: number, maxValue?: number}[], val: number) : void {
+    field.innerHTML = "";
+    opts.forEach((selectOpt) => {
+      let optionField = document.createElement('option');
+      optionField.setAttribute('value', selectOpt.value.toString());
+      optionField.classList.add("signalbox__select-option");
+      optionField.innerHTML = selectOpt.label;
+      optionField.selected = (selectOpt.value == val) ?  true : false;
+      field.appendChild(optionField); 
+    });
   }
 }
