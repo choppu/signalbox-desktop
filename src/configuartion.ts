@@ -106,13 +106,8 @@ export namespace Configuaration {
       prescaler.value = dataObj.prescaler.toString();
       period.value = dataObj.period.toString();
 
-      if(!dataObj.precise) {
-        let newSampRate = BoardInfo.getSampleFrequency(dataObj.prescaler, dataObj.period, freq);
-        msgContainer.innerHTML = `${samplingRate.value}Hz cannot be achieved.`;
-        samplingRate.value = newSampRate.toString();
-      } else {
-        msgContainer.innerHTML = "";
-      }
+      let newSampRate = BoardInfo.getSampleFrequency(dataObj.prescaler, dataObj.period, freq);
+      samplingRate.value = newSampRate.toString();
 
       e.preventDefault();
     });

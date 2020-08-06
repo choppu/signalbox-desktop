@@ -22,7 +22,7 @@
     <div class="signalbox__bottom-container">
       <div class="signalbox__controls-container">
         <input type="button" class="signalbox__controls-btn" id="controls-btn-configure" value="&#xe8b8"
-          disabled="disabled">
+          >
         <input type="button" class="signalbox__controls-btn" id="controls-btn-export-wav" value="&#xe884"
           disabled="disabled">
         <input type="button" class="signalbox__controls-btn signalbox__start-btn" id="controls-btn-start"
@@ -72,32 +72,41 @@
       </div>
     </div>
   </div>
-  <div class="signalbox__configure-container signalbox__hidden" id="configuration-container">
+  <div class="signalbox__configure-container group signalbox__hidden" id="configuration-container">
     <div class="signalbox__config-section-container">
       <p class="signalbox__config-section-heading">ADC Configuration</p>
       <div class="signalbox__config-section-form" id="idc-form">
         <div class="signalbox__config-section-form-element">
-          <label for="adc-enabled" class="signalbox__config-section-form-label">Enabled</label>
-          <input type="radio" class="signalbox__config-section-form-radio" id="adc-enabled" name="adc-enabled" value="adc-enabled" checked required>
+          <div class="signalbox__onoffswitch group">
+            <label class="signalbox__config-section-form-label">Enabled</label>
+            <input type="checkbox" name="adc-enabled" class="signalbox__onoffswitch-checkbox" id="adc-enabled" required>
+            <label class="signalbox__onoffswitch-label" for="adc-enabled">
+              <span class="signalbox__onoffswitch-inner"></span>
+              <span class="signalbox__onoffswitch-switch"></span>
+            </label>
+          </div>
         </div>
-        <div class="signalbox__config-section-form-element">
+        <div class="signalbox__config-section-form-element group">
           <label for="adc-oversampling" class="signalbox__config-section-form-label">Oversampling</label>
-          <select name="adc-oversampling" id="adc-oversampling" class="signalbox__config-section-form-select"required></select>
+          <select name="adc-oversampling" id="adc-oversampling" class="signalbox__config-section-form-select"
+            required></select>
         </div>
-        <div class="signalbox__config-section-form-element">
+        <div class="signalbox__config-section-form-element group">
           <label for="adc-sampling-time" class="signalbox__config-section-form-label">Sampling Time</label>
-          <select name="adc-sampling-time" id="adc-sampling-time" class="signalbox__config-section-form-select"required></select>
+          <select name="adc-sampling-time" id="adc-sampling-time" class="signalbox__config-section-form-select"
+            required></select>
         </div>
-        <div class="signalbox__config-section-form-element">
-          <label for="adc-oversampling" class="signalbox__config-section-form-label">Prescaler</label>
-          <input type="text" id="adc-prescaler" name="adc-prescaler" class="signalbox__config-section-form-text" required>
-          <label for="adc-period" class="signalbox__config-section-form-label">Period time</label>
-          <input type="text" id="adc-period" name="adc-period" class="signalbox__config-section-form-text" required>
-        </div>
-        <div class="signalbox__config-section-form-element">
+        <div class="signalbox__config-section-form-element group">
           <label for="adc-samp-rate" class="signalbox__config-section-form-label">Sampling rate</label>
-          <input type="text" id="adc-samp-rate" name="adc-samp-rate" class="signalbox__config-section-form-text" required>
-          <span id="adc-frequency-message"></span>
+          <input type="text" id="adc-samp-rate" name="adc-samp-rate" class="signalbox__config-section-form-text"
+            required>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="adc-oversampling" class="signalbox__config-section-form-label-inline">Prescaler</label>
+          <input type="text" id="adc-prescaler" name="adc-prescaler" class="signalbox__config-section-form-text signalbox__config-section-form-text-inline"
+            required>
+          <label for="adc-period" class="signalbox__config-section-form-label-inline">Period time</label>
+          <input type="text" id="adc-period" name="adc-period" class="signalbox__config-section-form-text signalbox__config-section-form-text-inline" required>
         </div>
       </div>
     </div>
@@ -105,63 +114,94 @@
       <p class="signalbox__config-section-heading">DAC Configuration</p>
       <div class="signalbox__config-section-form" id="dac-form">
         <div class="signalbox__config-section-form-element">
-          <label for="dac-enabled" class="signalbox__config-section-form-label">Enabled</label>
-          <input type="radio" class="signalbox__config-section-form-radio" id="dac-enabled" name="dac-enabled" value="dac-enabled" required>
+          <div class="signalbox__onoffswitch group">
+            <label class="signalbox__config-section-form-label">Enabled</label>
+            <input type="checkbox" name="dac-enabled" class="signalbox__onoffswitch-checkbox" id="dac-enabled" required>
+            <label class="signalbox__onoffswitch-label" for="dac-enabled">
+              <span class="signalbox__onoffswitch-inner"></span>
+              <span class="signalbox__onoffswitch-switch"></span>
+            </label>
+          </div>
         </div>
-        <div class="signalbox__config-section-form-element">
-          <label for="dac-oversampling" class="signalbox__config-section-form-label">Prescaler</label>
-          <input type="text" id="dac-prescaler" name="dac-prescaler" class="signalbox__config-section-form-text" required>
-          <label for="dac-period" class="signalbox__config-section-form-label">Period time</label>
-          <input type="text" id="dac-period" name="dac-period" class="signalbox__config-section-form-text" required>
-        </div>
-        <div class="signalbox__config-section-form-element">
+        <div class="signalbox__config-section-form-element group">
           <label for="dac-samp-rate" class="signalbox__config-section-form-label">Sampling rate</label>
-          <input type="text" id="dac-samp-rate" name="dac-samp-rate" class="signalbox__config-section-form-text" required>
-          <span id="dac-frequency-message"></span>
+          <input type="text" id="dac-samp-rate" name="dac-samp-rate" class="signalbox__config-section-form-text"
+            required>
+        </div>
+        <div class="signalbox__config-section-form-element">
+          <label for="dac-oversampling" class="signalbox__config-section-form-label-inline">Prescaler</label>
+          <input type="text" id="dac-prescaler" name="dac-prescaler" class="signalbox__config-section-form-text signalbox__config-section-form-text-inline"
+            required>
+          <label for="dac-period" class="signalbox__config-section-form-label-inline">Period time</label>
+          <input type="text" id="dac-period" name="dac-period" class="signalbox__config-section-form-text signalbox__config-section-form-text-inline" required>
         </div>
       </div>
     </div>
     <div class="signalbox__config-section-container">
-      <p class="signalbox__config-section-heading">OPAMP Configuration</p>
+      <p class="signalbox__config-section-heading">OPAMP 1 Configuration</p>
       <div class="signalbox__config-section-form" id="opamp-form">
-        <p class="signalbox__config-section-form-heading">OPAMP 2</p>
         <div class="signalbox__config-section-form-element">
-          <label for="opamp-enabled" class="signalbox__config-section-form-label">Enabled</label>
-          <input type="radio" class="signalbox__config-section-form-radio" id="opamp-enabled" name="opamp-enabled" value="opamp-enabled" required>
+          <div class="signalbox__onoffswitch group">
+            <label class="signalbox__config-section-form-label">Enabled</label>
+            <input type="checkbox" name="opamp-enabled" class="signalbox__onoffswitch-checkbox" id="opamp-enabled" required>
+            <label class="signalbox__onoffswitch-label" for="opamp-enabled">
+              <span class="signalbox__onoffswitch-inner"></span>
+              <span class="signalbox__onoffswitch-switch"></span>
+            </label>
+          </div>
         </div>
-        <div class="signalbox__config-section-form-element">
+        <div class="signalbox__config-section-form-element group">
           <label for="opamp-gain" class="signalbox__config-section-form-label">Gain</label>
-          <select name="opamp-gain" id="opamp-gain" class="signalbox__config-section-form-select"required></select>
+          <select name="opamp-gain" id="opamp-gain" class="signalbox__config-section-form-select" required></select>
         </div>
         <div class="signalbox__config-section-form-element">
-          <label for="opamp-inv-input" class="signalbox__config-section-form-label">Inverting input</label>
-          <input type="radio" class="signalbox__config-section-form-radio" id="opamp-inv-input" name="opamp-inv-input" value="opamp-inv-input" required>
+          <div class="signalbox__onoffswitch group">
+            <label class="signalbox__config-section-form-label">Inverting input</label>
+            <input type="checkbox" name="opamp-inv-input" class="signalbox__onoffswitch-checkbox" id="opamp-inv-input" required>
+            <label class="signalbox__onoffswitch-label" for="opamp-inv-input">
+              <span class="signalbox__onoffswitch-inner"></span>
+              <span class="signalbox__onoffswitch-switch"></span>
+            </label>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="signalbox__config-section-container">
+      <p class="signalbox__config-section-heading">OPAMP 2 Configuration</p>
       <div class="signalbox__config-section-form" id="opamp2-form">
-        <p class="signalbox__config-section-form-heading">OPAMP 2</p>
         <div class="signalbox__config-section-form-element">
-          <label for="opamp2-enabled" class="signalbox__config-section-form-label">Enabled</label>
-          <input type="radio" class="signalbox__config-section-form-radio" id="opamp2-enabled" name="opamp2-enabled" value="opamp2-enabled" required>
+          <div class="signalbox__onoffswitch group">
+            <label class="signalbox__config-section-form-label">Enabled</label>
+            <input type="checkbox" name="opamp2-enabled" class="signalbox__onoffswitch-checkbox" id="opamp2-enabled" required>
+            <label class="signalbox__onoffswitch-label" for="opamp2-enabled">
+              <span class="signalbox__onoffswitch-inner"></span>
+              <span class="signalbox__onoffswitch-switch"></span>
+            </label>
+          </div>
         </div>
-        <div class="signalbox__config-section-form-element">
+        <div class="signalbox__config-section-form-element group">
           <label for="opamp2-gain" class="signalbox__config-section-form-label">Gain</label>
-          <select name="opamp2-gain" id="opamp2-gain" class="signalbox__config-section-form-select"required></select>
+          <select name="opamp2-gain" id="opamp2-gain" class="signalbox__config-section-form-select" required></select>
         </div>
         <div class="signalbox__config-section-form-element">
-          <label for="opamp2-inv-input" class="signalbox__config-section-form-label">Inverting input</label>
-          <input type="radio" class="signalbox__config-section-form-radio" id="opamp2-inv-input" name="opamp2-inv-input" value="opamp2-inv-input" required>
+          <div class="signalbox__onoffswitch group">
+            <label class="signalbox__config-section-form-label">Inverting input</label>
+            <input type="checkbox" name="opamp2-inv-input" class="signalbox__onoffswitch-checkbox" id="opamp2-inv-input" required>
+            <label class="signalbox__onoffswitch-label" for="opamp2-inv-input">
+              <span class="signalbox__onoffswitch-inner"></span>
+              <span class="signalbox__onoffswitch-switch"></span>
+            </label>
+          </div>
         </div>
       </div>
-      <div class="signalbox__btns-container">
-        <button type="submit" class="signalbox__btn" id="configuration-btn-submit">Configure</button>
-        <button type="submit" class="signalbox__btn" id="configuration-btn-cancel">Cancel</button>
-      </div>
+    </div>
+    <div class="signalbox__btns-container">
+      <button type="submit" class="signalbox__btn" id="configuration-btn-submit">Configure</button>
+      <button type="submit" class="signalbox__btn" id="configuration-btn-cancel">Cancel</button>
     </div>
   </div>
 </body>
 <script>
   require('./out/renderer.js');
 </script>
-
 </html>

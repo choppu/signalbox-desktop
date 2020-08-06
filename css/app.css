@@ -276,6 +276,201 @@ chart-legend {
 }
 
 .signalbox__configure-container {
-  background: black;
+  background-color: rgb(10, 30, 39);
+  height: 100%;
   color: white;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.signalbox__config-section-container {
+  display: inline-block;
+  width: 48%;
+  height: 42%;
+  background: rgb(5, 25, 29);
+  vertical-align: middle;
+  box-sizing: border-box;
+  margin: 1em .75%;
+  padding: 1em;
+}
+
+.signalbox__config-section-heading {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .98em;
+  padding-bottom: 1em;
+}
+
+.signalbox__onoffswitch {
+  position: relative; 
+  width: 100%;
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none;
+  box-sizing: border-box;
+}
+
+.signalbox__onoffswitch-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  left: 0;
+  bottom: .5em;
+  right: 0;
+  vertical-align: middle;
+}
+.signalbox__onoffswitch-label {
+  display: block; 
+  overflow: hidden; 
+  cursor: pointer;
+  border: 2px solid rgba(92, 100, 104, 0); 
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.30), 0 2px 5px rgba(0,0,0,0.22);
+  position: relative;
+  width: 70px;
+  height: 25px;
+}
+.signalbox__onoffswitch-inner {
+  display: block; 
+  width: 200%; 
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.signalbox__onoffswitch-inner:before, .signalbox__onoffswitch-inner:after {
+  display: block; 
+  float: left; 
+  width: 50%; 
+  height: 25px; 
+  padding: 0; 
+  line-height: 25px;
+  font-size: 14px; 
+  color: white; 
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.signalbox__onoffswitch-inner:before {
+  font-family: "Material Icons Outlined", monospace;
+  content: "done";
+  padding-left: 25px;
+  background: rgb(136, 198, 206);
+  color: #FFFFFF;
+}
+.signalbox__onoffswitch-inner:after {
+  font-family: "Material Icons Outlined", monospace;
+  content: "clear";
+  padding-right: 25px;
+  background-color: #EEEEEE; 
+  color: #999999;
+  text-align: right;
+}
+.signalbox__onoffswitch-switch {
+  display: block; 
+  width: 15px;
+  height: 15px;
+  background: #ffffff;
+  position: absolute; 
+  bottom: 0;
+  top: 0;
+  margin: 3.5px;
+  border: 2px solid #999999;
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s; 
+}
+#adc-enabled:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-inner,
+#dac-enabled:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-inner,
+#opamp-enabled:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-inner,
+#opamp2-enabled:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-inner,
+#opamp-inv-input:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-inner,
+#opamp2-inv-input:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-inner
+{
+  margin-left: 0;
+}
+#adc-enabled:checked + .signalbox__onoffswitch-label .signalbox__onoffswitch-switch, 
+#dac-enabled:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-switch,
+#opamp-enabled:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-switch,
+#opamp2-enabled:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-switch,
+#opamp-inv-input:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-switch,
+#opamp2-inv-input:checked + .signalbox__onoffswitch-label  .signalbox__onoffswitch-switch
+{
+  right: 0; 
+}
+
+.signalbox__config-section-form-element {
+  padding: .7em 0;
+}
+
+.signalbox__config-section-form-label {
+  float: left;
+  width: 25%;
+  text-transform: uppercase;
+  font-size: .9em;
+  padding-top: .3em;
+  box-sizing: border-box;
+}
+
+.signalbox__config-section-form-label-inline {
+ text-transform: uppercase;
+  font-size: .9em;
+  margin-top: 10em;
+  box-sizing: border-box;
+}
+
+.signalbox__config-section-form-select {
+  width: 200px;
+  border: none;
+  height: 25px;
+  display: inline-block;
+  -moz-appearance:none; 
+  -webkit-appearance:none; 
+  appearance:none;
+  font-family: 'IBM Plex Mono', monospace;
+  background: url("../img/carrier.png");
+  background-repeat: no-repeat;
+  background-size: 8px;
+  background-position-x: 97%;
+  background-position-y: 10px;
+  color: white;
+  border-bottom: white solid 1px;
+  outline: none;
+  box-sizing: border-box;
+  padding-left: 3px;
+}
+
+.signalbox__config-section-form-text {
+  width: 200px;
+  border: none;
+  height: 25px;
+  background: none;
+  font-family: 'IBM Plex Mono', monospace;
+  box-sizing: border-box;
+  padding-left: 3px;
+  border-bottom: white solid 1px;
+  outline: none;
+  color: white;
+}
+
+.signalbox__config-section-form-text-inline {
+  width: 100px;
+}
+
+.signalbox__btns-container {
+  text-align: center;
+}
+
+.signalbox__btn {
+  background: rgb(136, 198, 206);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.30), 0 2px 5px rgba(0,0,0,0.22);
+  padding: .9em 0;
+  width: 130px;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  font-size: .9em;
+  margin: 1em .5em;
 }
