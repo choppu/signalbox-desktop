@@ -13,7 +13,7 @@
   "author": "Ksenia Balistreri",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^9.1.1",
+    "electron": "^9.3.0",
     "typescript": "^3.9.7"
   },
   "dependencies": {
